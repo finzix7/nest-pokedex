@@ -14,9 +14,15 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      //transforma la data de los DTOs segun su tipo
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      }
     }),
   )
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
+  console.log(`App running on port ${process.env.PORT}`);
 }
 bootstrap();
